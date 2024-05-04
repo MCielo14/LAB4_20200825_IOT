@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_navigation"
+    app:startDestination="@id/geolocalizacionFragment">
+
+    <fragment
+        android:id="@+id/geolocalizacionFragment"
+        android:name="com.example.lab4_20200825.fragments.GeolocalizacionFragment"
+        android:label="fragment_geolocalizacion"
+        tools:layout="@layout/fragment_geolocalizacion" />
+    <fragment
+        android:id="@+id/climaFragment"
+        android:name="com.example.lab4_20200825.fragments.ClimaFragment"
+        android:label="fragment_clima"
+        tools:layout="@layout/fragment_clima" />
+</navigation>
