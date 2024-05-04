@@ -1,18 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!-- navigation/nav_graph.xml -->
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/my_navigation"
+    android:id="@+id/nav_graph"
     app:startDestination="@id/geolocalizacionFragment">
 
     <fragment
         android:id="@+id/geolocalizacionFragment"
         android:name="com.example.lab4_20200825.fragments.GeolocalizacionFragment"
         android:label="fragment_geolocalizacion"
-        tools:layout="@layout/fragment_geolocalizacion" />
+        tools:layout="@layout/fragment_geolocalizacion">
+        <action
+            android:id="@+id/action_geolocalizacionFragment_to_climaFragment"
+            app:destination="@id/climaFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
     <fragment
         android:id="@+id/climaFragment"
         android:name="com.example.lab4_20200825.fragments.ClimaFragment"
         android:label="fragment_clima"
-        tools:layout="@layout/fragment_clima" />
+        tools:layout="@layout/fragment_clima">
+        <action
+            android:id="@+id/action_climaFragment_to_geolocalizacionFragment"
+            app:destination="@id/geolocalizacionFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"/>
+    </fragment>
 </navigation>

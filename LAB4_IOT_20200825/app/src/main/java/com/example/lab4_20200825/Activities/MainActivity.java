@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AlertDialog;
@@ -19,6 +20,8 @@ import com.example.lab4_20200825.R;
 public class MainActivity extends AppCompatActivity {
     private Button btnIngresar;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +29,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         btnIngresar = findViewById(R.id.btnIngresar);
         updateButtonState();
+        btnIngresar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AppActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
     @Override
     protected void onResume() {
@@ -58,4 +69,7 @@ public class MainActivity extends AppCompatActivity {
         builder.setNegativeButton("Ok", (dialog, which) -> dialog.dismiss());
         builder.show();
     }
+
+
+
 }

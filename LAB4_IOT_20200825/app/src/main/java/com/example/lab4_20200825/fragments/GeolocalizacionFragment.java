@@ -1,66 +1,119 @@
 package com.example.lab4_20200825.fragments;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.lab4_20200825.Adapters.GeoAdapter;
+import com.example.lab4_20200825.Data.Geo;
+import com.example.lab4_20200825.Models.GeoViewModel;
 import com.example.lab4_20200825.R;
+import com.example.lab4_20200825.databinding.FragmentGeolocalizacionBinding;
+import com.example.lab4_20200825.APIS.OpenWeatherApiC;
+import com.example.lab4_20200825.APIS.OpenWeatherApiService ;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link GeolocalizacionFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import androidx.lifecycle.ViewModelProvider;
+
 public class GeolocalizacionFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private FragmentGeolocalizacionBinding binding;
+    private GeoViewModel viewModel;
+    private GeoAdapter adapter;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public GeolocalizacionFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment GeolocalizacionFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static GeolocalizacionFragment newInstance(String param1, String param2) {
-        GeolocalizacionFragment fragment = new GeolocalizacionFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        binding = FragmentGeolocalizacionBinding.inflate(inflater, container, false);
+        viewModel = new ViewModelProvider(requireActivity()).get(GeoViewModel.class);
+        return binding.getRoot();
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        RecyclerView recyclerView = binding.recyclerViewGeolocalizacion;
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+        adapter = new GeoAdapter(viewModel.getGeoList().getValue());
+        recyclerView.setAdapter(adapter);
+
+        viewModel.getGeoList().observe(getViewLifecycleOwner(), newList -> {
+            adapter.notifyDataSetChanged();  // Refresh data when it changes
+        });
+
+        binding.buttonBuscar.setOnClickListener(v -> {
+            String cityName = binding.editTextCityName.getText().toString();
+            if (!cityName.isEmpty()) {
+                fetchGeolocation(cityName);
+                disableButtons();
+            } else {
+                Toast.makeText(getContext(), "Ingrese el nombre de la ciudad", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        binding.buttonClima.setOnClickListener(v -> navigateToClima());
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_geolocalizacion, container, false);
+    private void fetchGeolocation(String cityName) {
+        OpenWeatherApiService service = OpenWeatherApiC.getClient().create(OpenWeatherApiService.class);
+        Call<List<Geo>> call = service.getGeolocation(cityName);
+
+        call.enqueue(new Callback<List<Geo>>() {
+            @Override
+            public void onResponse(Call<List<Geo>> call, Response<List<Geo>> response) {
+                if (response.isSuccessful() && response.body() != null && !response.body().isEmpty()) {
+                    Geo location = response.body().get(0);
+                    viewModel.getGeoList().getValue().add(location);
+                    viewModel.getGeoList().postValue(viewModel.getGeoList().getValue());  // Update LiveData
+                } else {
+                    Toast.makeText(getContext(), "No se encontraron resultados", Toast.LENGTH_SHORT).show();
+                }
+                enableButtons();
+            }
+
+            @Override
+            public void onFailure(Call<List<Geo>> call, Throwable t) {
+                Toast.makeText(getContext(), "Error al conectar con la API: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                enableButtons();
+            }
+        });
+    }
+
+    private void disableButtons() {
+        binding.buttonBuscar.setEnabled(false);
+        binding.buttonClima.setEnabled(false);
+        binding.buttonBuscar.setBackgroundResource(R.drawable.button_selector_buscar);
+        binding.buttonClima.setBackgroundResource(R.drawable.button_selector_clima_geo);
+    }
+
+    private void enableButtons() {
+        binding.buttonBuscar.setEnabled(true);
+        binding.buttonClima.setEnabled(true);
+        binding.buttonBuscar.setBackgroundResource(R.drawable.button_selector_buscar);
+        binding.buttonClima.setBackgroundResource(R.drawable.button_selector_clima_geo);
+    }
+
+    private void navigateToClima() {
+        NavDirections action = GeolocalizacionFragmentDirections.actionGeolocalizacionFragmentToClimaFragment();
+        NavHostFragment.findNavController(this).navigate(action);
     }
 }

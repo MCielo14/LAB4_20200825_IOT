@@ -3,10 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="#3A93DA"
     tools:context=".fragments.ClimaFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
 
     <LinearLayout
         android:id="@+id/linearLayout8"
@@ -98,7 +103,7 @@
                 android:gravity="center"
                 android:text="Buscar"
                 android:textColor="@color/white"
-                android:background="@drawable/buttonbuscar"/>
+                android:background="@drawable/button_selector_buscar"/>
         </LinearLayout>
 
     </LinearLayout>
@@ -116,6 +121,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_clima"
             android:layout_width="382dp"
             android:layout_height="match_parent" />
     </LinearLayout>
@@ -163,7 +169,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/buttonbackgroundclima"
+                android:background="@drawable/button_selector_clima_geo"
                 android:gravity="center"
                 android:text="Geolocalización"
                 android:textColor="#0B3251" />
@@ -195,5 +201,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"></LinearLayout>
+    </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

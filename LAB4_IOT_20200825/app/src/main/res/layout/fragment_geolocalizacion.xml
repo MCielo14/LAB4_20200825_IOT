@@ -3,182 +3,172 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="#3A93DA"
     tools:context=".fragments.GeolocalizacionFragment">
 
     <LinearLayout
-        android:id="@+id/linearLayout8"
-        android:layout_width="413dp"
-        android:layout_height="68dp"
-        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:gravity="center">
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:id="@+id/linearLayout8"
+            android:layout_width="413dp"
+            android:layout_height="68dp"
             android:gravity="center"
-            android:text="Buscar geolocalización"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold" />
-    </LinearLayout>
+            android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/linearLayout7"
-        android:layout_width="416dp"
-        android:layout_height="76dp"
-        android:layout_marginBottom="1dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
-
-        <LinearLayout
-            android:layout_width="32dp"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"></LinearLayout>
-
-        <LinearLayout
-            android:layout_width="191dp"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="46dp"
-                android:layout_weight="1"
-                android:background="@drawable/buttonbackgroundclima"
-                android:gravity="center"
-                android:text="Ciudad" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="23dp"
-            android:layout_height="match_parent"
-            android:orientation="horizontal" />
-
-        <LinearLayout
-            android:layout_width="17dp"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"></LinearLayout>
-
-        <LinearLayout
-            android:layout_width="136dp"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:gravity="center"
-                android:text="Buscar"
-                android:textColor="@color/white"
-                android:background="@drawable/buttonbuscar"/>
+                android:text="Buscar geolocalización"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
         </LinearLayout>
 
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayout7"
+            android:layout_width="416dp"
+            android:layout_height="76dp"
+            android:layout_marginBottom="1dp"
+            android:orientation="horizontal">
 
-    <LinearLayout
-        android:id="@+id/linearLayout9"
-        android:layout_width="412dp"
-        android:layout_height="469dp"
-        android:layout_marginTop="1dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout10"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
+            <LinearLayout
+                android:layout_width="32dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"></LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="382dp"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="191dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-    <LinearLayout
-        android:id="@+id/linearLayout10"
-        android:layout_width="410dp"
-        android:layout_height="31dp"
-        android:layout_marginEnd="1dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout11"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout9"></LinearLayout>
+                <EditText
+                    android:id="@+id/editTextCityName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="46dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/buttonbackgroundclima"
+                    android:gravity="center"
+                    android:text="Ciudad" />
+            </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout11"
-        android:layout_width="409dp"
-        android:layout_height="83dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="2dp"
-        android:background="#0B3251"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout10">
+            <LinearLayout
+                android:layout_width="23dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal" />
+
+            <LinearLayout
+                android:layout_width="17dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="136dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonBuscar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_selector_buscar"
+                    android:gravity="center"
+                    android:text="Buscar"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+        </LinearLayout>
 
         <LinearLayout
-            android:layout_width="29dp"
-            android:layout_height="match_parent"
+            android:id="@+id/linearLayout9"
+            android:layout_width="412dp"
+            android:layout_height="469dp"
+            android:layout_marginTop="1dp"
             android:gravity="center"
-            android:orientation="horizontal"></LinearLayout>
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_geolocalizacion"
+                android:layout_width="382dp"
+                android:layout_height="match_parent" />
+        </LinearLayout>
 
         <LinearLayout
-            android:layout_width="156dp"
-            android:layout_height="match_parent"
+            android:id="@+id/linearLayout10"
+            android:layout_width="410dp"
+            android:layout_height="31dp"
+            android:layout_marginEnd="1dp"
+            android:orientation="vertical"></LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout11"
+            android:layout_width="409dp"
+            android:layout_height="83dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="2dp"
+            android:background="#0B3251"
             android:gravity="center"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/buttonbackgroundclima"
+            <LinearLayout
+                android:layout_width="29dp"
+                android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="Geolocalización"
-                android:textColor="#0B3251" />
+                android:orientation="horizontal"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="156dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/buttonbackgroundclima"
+                    android:gravity="center"
+                    android:text="Geolocalización"
+                    android:textColor="#0B3251" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="46dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="130dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonClima"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_selector_clima_geo"
+                    android:gravity="center"
+                    android:text="Clima"
+                    android:textColor="#0B3251" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"></LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="46dp"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"></LinearLayout>
-
-        <LinearLayout
-            android:layout_width="130dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/button5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/buttonbackgroundclima"
-                android:gravity="center"
-                android:text="Clima"
-                android:textColor="#0B3251" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"></LinearLayout>
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
