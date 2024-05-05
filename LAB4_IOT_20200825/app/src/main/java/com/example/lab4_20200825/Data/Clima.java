@@ -4,6 +4,16 @@ public class Clima {
     private Main main;
     private String name;
 
+    public String getWindDirection() {
+        return WindDirection;
+    }
+
+    public void setWindDirection(String windDirection) {
+        WindDirection = windDirection;
+    }
+
+    private String WindDirection;
+
     public String getName() {
         if (name == null || name.isEmpty()) {
             return "Desconocido";

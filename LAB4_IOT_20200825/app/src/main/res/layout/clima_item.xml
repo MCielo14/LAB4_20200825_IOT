@@ -9,7 +9,7 @@
     android:padding="9dp">
 
     <LinearLayout
-        android:layout_width="386dp"
+        android:layout_width="374dp"
         android:layout_height="89dp"
         android:background="@drawable/buttonbackground1"
         android:orientation="vertical">
@@ -29,33 +29,33 @@
             <LinearLayout
                 android:layout_width="205dp"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/item_ciudad"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
                     android:layout_weight="1"
-                    android:textColor="@color/black"
                     android:text="    Ciudad"
-                    android:textSize="30sp"/>
+                    android:textColor="@color/black"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="182dp"
+                android:layout_width="169dp"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/item_temperatura_actual"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textColor="@color/black"
-                    android:text="Temperatura Actual" />
+                    android:text="Temperatura Actual"
+                    android:textColor="@color/black" />
             </LinearLayout>
 
         </LinearLayout>
@@ -75,8 +75,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textColor="@color/black"
-                    android:text="    Temp. minima" />
+                    android:text="    Temp. minima"
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 
@@ -91,7 +91,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="MaximaTemperatur"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black" />
             </LinearLayout>
 
             <LinearLayout
@@ -105,7 +105,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Viento"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black" />
             </LinearLayout>
         </LinearLayout>
 

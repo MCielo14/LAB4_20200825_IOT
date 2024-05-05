@@ -32,11 +32,14 @@ public class ClimaAdapter extends RecyclerView.Adapter<ClimaAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Clima weather = weatherList.get(position);
         holder.cityName.setText(weather.getName());
-        // Como lo indica en el laboratorio se hace uso de 2 decimales y en unidades Kelvin
         holder.temperature.setText(String.format("Temp: %.2fK", weather.getMain().getTemp()));
         holder.tempMin.setText(String.format("Min: %.2fK", weather.getMain().getTemp_min()));
-        holder.tempMax.setText(String.format("Max: %.2fK", weather.getMain().getTemp_max() ));
+        holder.tempMax.setText(String.format("Max: %.2fK", weather.getMain().getTemp_max()));
+        if (weather.getWindDirection() != null) {
+            holder.windDirection.setText("Viento: " + weather.getWindDirection());
+        }
     }
+
 
     @Override
     public int getItemCount() {
@@ -48,6 +51,7 @@ public class ClimaAdapter extends RecyclerView.Adapter<ClimaAdapter.ViewHolder> 
         TextView temperature;
         TextView tempMin;
         TextView tempMax;
+        TextView windDirection;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -55,7 +59,16 @@ public class ClimaAdapter extends RecyclerView.Adapter<ClimaAdapter.ViewHolder> 
             temperature = itemView.findViewById(R.id.item_temperatura_actual);
             tempMin = itemView.findViewById(R.id.item_minima);
             tempMax = itemView.findViewById(R.id.item_maxima);
+            windDirection = itemView.findViewById(R.id.item_viento);
         }
     }
+    public void updateWindDirection(int position, String windDirection) {
+        if (position >= 0 && position < weatherList.size()) {
+            Clima weather = weatherList.get(position);
+            weather.setWindDirection(windDirection);
+            notifyItemChanged(position);
+        }
+    }
+
 }
 
