@@ -47,11 +47,13 @@ public class MainActivity extends AppCompatActivity {
     private void updateButtonState() {
         if (!isConnected()) {
             btnIngresar.setEnabled(false);
-            btnIngresar.setBackgroundColor(ContextCompat.getColor(this, R.color.colorDisabled)); // Establece el color a negro
+            // Establece el color a negro
+            btnIngresar.setBackgroundColor(ContextCompat.getColor(this, R.color.colorDisabled));
             showNoConnectionDialog();
         } else {
             btnIngresar.setEnabled(true);
-            btnIngresar.setBackgroundColor(ContextCompat.getColor(this, R.color.colorEnabled)); // Establece el color a rojo
+            // Establece el color a rojo
+            btnIngresar.setBackgroundColor(ContextCompat.getColor(this, R.color.colorEnabled));
         }
     }
 

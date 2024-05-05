@@ -57,7 +57,7 @@ public class GeolocalizacionFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         viewModel.getGeoList().observe(getViewLifecycleOwner(), newList -> {
-            adapter.notifyDataSetChanged();  // Refresh data when it changes
+            adapter.notifyDataSetChanged();
         });
 
         binding.buttonBuscar.setOnClickListener(v -> {
@@ -83,7 +83,7 @@ public class GeolocalizacionFragment extends Fragment {
                 if (response.isSuccessful() && response.body() != null && !response.body().isEmpty()) {
                     Geo location = response.body().get(0);
                     viewModel.getGeoList().getValue().add(location);
-                    viewModel.getGeoList().postValue(viewModel.getGeoList().getValue());  // Update LiveData
+                    viewModel.getGeoList().postValue(viewModel.getGeoList().getValue());
                 } else {
                     Toast.makeText(getContext(), "No se encontraron resultados", Toast.LENGTH_SHORT).show();
                 }

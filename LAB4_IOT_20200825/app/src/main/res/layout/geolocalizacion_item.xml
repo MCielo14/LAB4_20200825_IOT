@@ -37,10 +37,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="          Ciudad"
+                    android:text="Ciudad"
                     android:textColor="@color/black"
                     android:textStyle="bold"
-                    android:gravity="center"/>
+                    android:textSize="30sp"
+                    android:gravity="center"
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -69,9 +71,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="          Latitud"
+                    android:text="Latitud"
+                    android:gravity="center"
                     android:textColor="@color/black"
-                    android:gravity="center"/>
+                    />
 
             </LinearLayout>
 

@@ -26,6 +26,6 @@
             android:id="@+id/action_climaFragment_to_geolocalizacionFragment"
             app:destination="@id/geolocalizacionFragment"
             app:popUpTo="@id/nav_graph"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

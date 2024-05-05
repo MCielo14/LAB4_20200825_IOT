@@ -36,7 +36,7 @@ public class AppActivity extends AppCompatActivity {
                         public void run() {
                             doubleBackToExitPressedOnce = false;
                         }
-                    }, 2000); // Tiempo de espera en milisegundos para el segundo clic
+                    }, 2000);
                 }
             }
         });

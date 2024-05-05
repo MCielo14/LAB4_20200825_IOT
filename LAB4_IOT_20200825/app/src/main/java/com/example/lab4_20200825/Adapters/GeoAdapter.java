@@ -32,9 +32,8 @@ public class GeoAdapter extends RecyclerView.Adapter<GeoAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Geo cityInfo = cityInfoList.get(position);
         holder.cityName.setText(cityInfo.getName());
-        // Convertir los valores double a String
-        holder.latitude.setText(String.format("%s", cityInfo.getLat()));
-        holder.longitude.setText(String.format("%s", cityInfo.getLon()));
+        holder.latitude.setText("Lat: " + cityInfo.getLat());
+        holder.longitude.setText("Lon: " + cityInfo.getLon());
     }
 
     @Override
